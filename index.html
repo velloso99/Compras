@@ -1,29 +1,43 @@
-<!<!DOCTYPE <!DOCTYPE html>
-<html lang="pt-BR">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Loja OnLine</title>
-        <link rel="stylesheet" href="style.css">
-        
-    </head>
-    <body>
-        <div class="container">
-            <h1>Adicionar Produtos</h1>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Loja Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Minha Loja Online</h1>
+    </header>
+
+    <main>
+        <!-- Login do Administrador -->
+        <div id="loginForm">
+            <h2>Área do Administrador</h2>
+            <input type="password" id="password" placeholder="Digite a senha de admin">
+            <button onclick="login()">Entrar</button>
+        </div>
+
+        <!-- Painel de Administração -->
+        <div id="adminPanel" class="admin-panel" style="display: none;">
+            <h2>Gerenciar Produtos</h2>
             <form id="productForm">
                 <input type="text" id="nome" placeholder="Nome do Produto" required>
                 <input type="text" id="descricao" placeholder="Descrição" required>
                 <input type="number" id="preco" placeholder="Preço" required>
                 <input type="url" id="link" placeholder="Link para Compra" required>
-                <input type="file" id="imagem" accept="image/*">
+                <input type="file" id="imagem" accept="image/*" required>
                 <button type="submit">Adicionar Produto</button>
             </form>
-            
-                <h2>Produtos Disponíveis</h2>
-                <div id="productList"></div>
-
+            <button class="logout-btn" onclick="logout()">Sair</button>
         </div>
-          <script src="script.js"></script>
-    </body>
-</html>>
+
+        <h2>Produtos Disponíveis</h2>
+        <div id="productList" class="grid"></div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
