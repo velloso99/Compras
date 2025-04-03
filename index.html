@@ -11,8 +11,19 @@
     <body>
         <div class="container">
             <h1>Adicionar Produtos</h1>
+            <form id="productForm">
+                <input type="text" id="nome" placeholder="Nome do Produto" required>
+                <input type="text" id="descricao" placeholder="Descrição" required>
+                <input type="number" id="preco" placeholder="Preço" required>
+                <input type="url" id="link" placeholder="Link para Compra" required>
+                <input type="file" id="imagem" accept="image/*">
+                <button type="submit">Adicionar Produto</button>
+            </form>
             
+                <h2>Produtos Disponíveis</h2>
+                <div id="productList"></div>
+
         </div>
-    
+          <script src="script.js"></script>
     </body>
 </html>>
