@@ -1,27 +1,11 @@
-/* Reset básico */
-body, h1, h2, p, input, button {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
 body {
-    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
     text-align: center;
 }
 
-/* Estilizando o cabeçalho */
-header {
-    background: #333;
-    color: white;
-    padding: 15px;
-    font-size: 24px;
-}
-
-/* Container principal */
-main {
-    max-width: 900px;
+.container {
+    max-width: 800px;
     margin: 20px auto;
     padding: 20px;
     background: white;
@@ -29,7 +13,6 @@ main {
     border-radius: 10px;
 }
 
-/* Formulário */
 form input, form button {
     display: block;
     width: 100%;
@@ -50,19 +33,18 @@ button:hover {
     background: darkgreen;
 }
 
-/* Layout responsivo dos produtos */
+/* Layout dos produtos (lado a lado) */
 .grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
     margin-top: 20px;
 }
 
-/* Estilo dos produtos */
 .produto {
     border: 1px solid #ddd;
-    padding: 15px;
+    padding: 10px;
     background: #fff;
     border-radius: 10px;
     width: 250px;
@@ -91,7 +73,6 @@ button:hover {
     background: darkgreen;
 }
 
-/* Botão de remoção para o admin */
 .remover {
     background: red;
     color: white;
@@ -104,16 +85,4 @@ button:hover {
     right: 10px;
 }
 
-/* Painel do admin */
-.admin-panel {
-    margin-top: 20px;
-    padding: 15px;
-    background: #ffefc2;
-    border-radius: 5px;
-}
 
-/* Botão de logout */
-.logout-btn {
-    margin-top: 10px;
-    background: #c0392b;
-}

@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Loja Online</title>
+    <title>Loja Online</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Minha Loja Online</h1>
-    </header>
+    <div class="container">
+        <h1>Loja Online</h1>
 
-    <main>
         <!-- Login do Administrador -->
         <div id="loginForm">
             <h2>Área do Administrador</h2>
@@ -20,8 +18,8 @@
             <button onclick="login()">Entrar</button>
         </div>
 
-        <!-- Painel de Administração -->
-        <div id="adminPanel" class="admin-panel" style="display: none;">
+        <!-- Painel de Administração (Só para Admin) -->
+        <div id="adminPanel" style="display: none;">
             <h2>Gerenciar Produtos</h2>
             <form id="productForm">
                 <input type="text" id="nome" placeholder="Nome do Produto" required>
@@ -31,12 +29,12 @@
                 <input type="file" id="imagem" accept="image/*" required>
                 <button type="submit">Adicionar Produto</button>
             </form>
-            <button class="logout-btn" onclick="logout()">Sair</button>
+            <button onclick="logout()">Sair</button>
         </div>
 
         <h2>Produtos Disponíveis</h2>
         <div id="productList" class="grid"></div>
-    </main>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -44,16 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const preco = document.getElementById("preco").value;
         const link = document.getElementById("link").value;
         const imagemInput = document.getElementById("imagem").files[0];
-        if (imagemInput) {
+
+        if (nome && descricao && preco && link && imagemInput) {
             const reader = new FileReader();
             reader.onload = function (e) {
-                const produto = {
-                    nome, 
-                    descricao, 
-                    preco, 
-                    link, 
-                    imagem: e.target.result // CONVERTENDO PARA BASE64
-                };
+                const produto = { nome, descricao, preco, link, imagem: e.target.result };
                 salvarProduto(produto);
                 exibirProdutos();
                 form.reset();
@@ -70,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
         exibirProdutos();
     };
 
-    // Função de Login
+    // Função de Login (Senha Simples)
     window.login = function () {
         const senha = document.getElementById("password").value;
         if (senha === "admin123") {
@@ -93,3 +88,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
     exibirProdutos();
 });
+
+
