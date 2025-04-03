@@ -4,7 +4,7 @@
 
 ## Desenvolvido por Vellosodev.
 ## Ferramenta de Desenvolvimento: Visual Studio.
-## Linguagem de Programação: Django.
+## Linguagem de Programação: HTML, CSS, JavaScript.
 
 
 # Projeto para efetuar compras de outros sites afiliados
