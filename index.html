@@ -1,41 +1,196 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja Online</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Minha Loja Virtual</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 0;
+        }
+        .nav-buttons button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .nav-buttons button:hover {
+            background-color: #0056b3;
+        }
+        section {
+            padding: 20px;
+        }
+        .produto {
+            display: inline-block;
+            background: white;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .produto img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .produto a {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        .produto a:hover {
+            background-color: #0056b3;
+        }
+        .admin {
+            display: none;
+            padding: 20px;
+            background: white;
+            margin: 20px auto;
+            width: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-
-    <div class="container">
-        <h1>Loja Online</h1>
-
-        <!-- Login do Administrador -->
-        <div id="loginForm">
-            <h2>Área do Administrador</h2>
-            <input type="password" id="password" placeholder="Digite a senha de admin">
-            <button onclick="login()">Entrar</button>
+    <header>
+        <h1>Minha Loja</h1>
+        <div class="nav-buttons">
+            <button onclick="mudarPagina('home')">Início</button>
+            <button onclick="mudarPagina('produtos')">Produtos</button>
+            <button onclick="mudarPagina('contato')">Contato</button>
+            <button onclick="mostrarAdmin()">Área Administrativa</button>
         </div>
-
-        <!-- Painel de Administração (Só para Admin) -->
-        <div id="adminPanel" style="display: none;">
-            <h2>Gerenciar Produtos</h2>
-            <form id="productForm">
-                <input type="text" id="nome" placeholder="Nome do Produto" required>
-                <input type="text" id="descricao" placeholder="Descrição" required>
-                <input type="number" id="preco" placeholder="Preço" required>
-                <input type="url" id="link" placeholder="Link para Compra" required>
-                <input type="file" id="imagem" accept="image/*" required>
-                <button type="submit">Adicionar Produto</button>
-            </form>
-            <button onclick="logout()">Sair</button>
+    </header>
+    
+    <section id="home">
+        <h2>Bem-vindo à nossa loja!</h2>
+        <p>Confira nossos produtos incríveis.</p>
+    </section>
+    
+    <section id="produtos">
+        <h2>Produtos</h2>
+        <div id="lista-produtos"></div>
+    </section>
+    
+    <section id="contato">
+        <h2>Contato</h2>
+        <p>Email: contato@minhaloja.com</p>
+    </section>
+    
+    <section id="admin" class="admin">
+        <h2>Área Administrativa</h2>
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha">
+        <button onclick="verificarSenha()">Acessar</button>
+        <button onclick="sairAdmin()">Sair</button>
+        <div id="admin-content" style="display:none;">
+            <h3>Gerenciar Produtos</h3>
+            <input type="text" id="nome-produto" placeholder="Nome do produto">
+            <input type="text" id="preco-produto" placeholder="Preço">
+            <input type="text" id="link-produto" placeholder="Link de compra">
+            <input type="text" id="imagem-produto" placeholder="URL da imagem">
+            <button onclick="adicionarProduto()">Adicionar Produto</button>
+            <ul id="lista-admin-produtos"></ul>
         </div>
-
-        <h2>Produtos Disponíveis</h2>
-        <div id="productList" class="grid"></div>
-    </div>
-
-    <script src="script.js"></script>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Minha Loja. Todos os direitos reservados.</p>
+    </footer>
+    
+    <script>
+        let produtos = [];
+        let adminLogado = false;
+        
+        function mudarPagina(pagina) {
+            document.querySelectorAll('section').forEach(sec => sec.style.display = 'none');
+            document.getElementById(pagina).style.display = 'block';
+        }
+        
+        function mostrarAdmin() {
+            document.getElementById('admin').style.display = 'block';
+        }
+        
+        function verificarSenha() {
+            const senha = document.getElementById('senha').value;
+            if (senha === "admin123") {
+                adminLogado = true;
+                document.getElementById('admin-content').style.display = 'block';
+                atualizarProdutos();
+            } else {
+                alert("Senha incorreta!");
+            }
+        }
+        
+        function sairAdmin() {
+            adminLogado = false;
+            document.getElementById('admin').style.display = 'none';
+            document.getElementById('admin-content').style.display = 'none';
+            document.getElementById('senha').value = '';
+        }
+        
+        function adicionarProduto() {
+            const nome = document.getElementById('nome-produto').value;
+            const preco = document.getElementById('preco-produto').value;
+            const link = document.getElementById('link-produto').value;
+            const imagem = document.getElementById('imagem-produto').value;
+            
+            if (nome && preco && link && imagem) {
+                const produto = { nome, preco, link, imagem };
+                produtos.push(produto);
+                atualizarProdutos();
+            }
+        }
+        
+        function atualizarProdutos() {
+            const listaProdutos = document.getElementById('lista-produtos');
+            listaProdutos.innerHTML = '';
+            produtos.forEach((produto, index) => {
+                const div = document.createElement('div');
+                div.classList.add('produto');
+                div.innerHTML = `
+                    <img src="${produto.imagem}" alt="${produto.nome}">
+                    <p>${produto.nome} - R$ ${produto.preco}</p>
+                    <a href="${produto.link}" target="_blank">Comprar</a>
+                    ${adminLogado ? `<button onclick="removerProduto(${index})">Excluir</button>` : ''}
+                `;
+                listaProdutos.appendChild(div);
+            });
+        }
+        
+        function removerProduto(index) {
+            produtos.splice(index, 1);
+            atualizarProdutos();
+        }
+        
+        mudarPagina('home');
+    </script>
 </body>
 </html>
