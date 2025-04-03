@@ -1,14 +1,14 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
+    background-color: #4d0707;
     text-align: center;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1820px;
     margin: 20px auto;
     padding: 20px;
-    background: white;
+    background: rgb(46, 4, 4);
     box-shadow: 0px 0px 10px #ddd;
     border-radius: 10px;
 }
@@ -22,7 +22,7 @@ form input, form button {
 
 button {
     background: green;
-    color: white;
+    color: rgb(223, 205, 205);
     border: none;
     cursor: pointer;
     padding: 10px;
